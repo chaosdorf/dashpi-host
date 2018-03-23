@@ -1,0 +1,65 @@
+  - hosts: dashpi
+    remote_user: pi
+    tasks:
+      - name: ensure that awesome is installed
+        apt: name=awesome state=installed
+        become: yes
+      - name: ensure that LightDM is installed
+        apt: name=lightdm state=installed
+        become: yes
+      - name: copy the LightDM config
+        copy:
+            src: ../etc/lightdm/lightdm.conf
+            dest: /etc/lightdm/lightdm.conf
+            owner: root
+            group: root
+            mode: 0644
+        become: yes
+        notify:
+          - restart LightDM
+      - name: ensure that LightDM is enabled and running
+        systemd:
+            name: lightdm.service
+            state: started
+            enabled: yes
+        become: yes
+      - name: ensure that unclutter is installed
+        apt: name=unclutter state=installed
+        become: yes
+      - name: copy the systemd unit file for unclutter
+        copy:
+            src: ../etc/systemd/user/unclutter.service
+            dest: /etc/systemd/user/unclutter.service
+            owner: root
+            group: root
+            mode: 0644
+        become: yes
+      - name: ensure that unclutter is enabled and running
+        systemd:
+            name: unclutter.service
+            state: started
+            enabled: yes
+            daemon_reload: yes
+            user: yes
+      - name: ensure that xset is installed
+        apt: name=x11-xserver-utils state=installed
+        become: yes
+      - name: copy the systemd unit file for xset
+        copy:
+            src: ../etc/systemd/user/xset.service
+            dest: /etc/systemd/user/xset.service
+            owner: root
+            group: root
+            mode: 0644
+        become: yes
+      - name: ensure that xset is enabled and running
+        systemd:
+            name: xset.service
+            state: started
+            enabled: yes
+            daemon_reload: yes
+            user: yes
+    handlers:
+      - name: restart LightDM
+        systemd: name=lightdm.service state=restarted
+        become: yes
