@@ -1,0 +1,13 @@
+[Unit]
+Description=displays http://dashboard
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/firefox http://dashboard
+ExecReload=/usr/bin/xdotool key F5
+Environment=DISPLAY=:0
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

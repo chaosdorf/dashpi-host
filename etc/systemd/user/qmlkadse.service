@@ -1,0 +1,13 @@
+[Unit]
+Description=displays http://maurudor.de
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qtchooser -run-tool=qml -qt=5 main.qml
+WorkingDirectory=/home/pi/QMLkadse
+Environment=DISPLAY=:0
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
