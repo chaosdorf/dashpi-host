@@ -1,0 +1,62 @@
+  - hosts: dashpi
+    remote_user: pi
+    tasks:
+      - name: ensure that initramfs-tools is installed
+        apt: name=initramfs-tools state=installed
+        become: yes
+      - name: copy the update-initramfs configuration
+        copy:
+            src: ../etc/initramfs-tools/update-initramfs.conf
+            dest: /etc/initramfs-tools/update-initramfs.conf
+            owner: root
+            group: root
+            mode: 0644
+        become: yes
+        notify:
+          - rebuild initramfs
+      - name: ensure that busybox-static is installed
+        apt: name=busybox-static state=installed
+        become: yes
+        notify:
+          - rebuild initramfs
+      - name: copy the overlay initramfs script
+        copy:
+            src: ../etc/initramfs-tools/scripts/init-bottom/root-ro
+            dest: /etc/initramfs-tools/scripts/init-bottom/root-ro
+            owner: root
+            group: root
+            mode: 0755
+        become: yes
+        notify:
+          - rebuild initramfs
+      - name: ensure that the overlay kernel module is included in initramfs
+        lineinfile:
+            path: /etc/initramfs-tools/modules
+            line: overlay
+            state: present
+        become: yes
+        notify:
+          - rebuild initramfs
+      - name: ensure that the initramfs is loaded at boot
+        blockinfile:
+            path: /boot/config.txt
+            block: |
+                
+                # initramfs
+                initramfs initrd followkernel
+                ramfsfile=initrd
+                ramfsaddr=-1
+            state: present
+        become: yes
+      - name: make sure that /boot is marked to be mounted read-only
+        mount:
+            path: /boot
+            src: /dev/mmcblk0p1
+            fstype: vfat
+            opts: defaults,ro
+            state: present
+        become: yes
+    handlers:
+      - name: rebuild initramfs
+        shell: mkinitramfs -o /boot/initrd $(uname -r)
+        become: yes
