@@ -1,0 +1,59 @@
+{
+    "addons": [
+        {
+            "aboutURL": null,
+            "active": true,
+            "appDisabled": false,
+            "applyBackgroundUpdates": 1,
+            "bootstrap": false,
+            "defaultLocale": {
+                "creator": "Vadim Ushakov",
+                "description": "Run Firefox in the Fullscreen Mode by default",
+                "homepageURL": null,
+                "name": "Run Fullscreen"
+            },
+            "dependencies": [],
+            "descriptor": "/home/pi/.mozilla/firefox/default/extensions/run-fullscreen@helpful-stuff.ru.xpi",
+            "foreignInstall": false,
+            "hasBinaryComponents": false,
+            "hasEmbeddedWebExtension": false,
+            "icon64URL": null,
+            "iconURL": null,
+            "icons": {},
+            "id": "run-fullscreen@helpful-stuff.ru",
+            "installDate": 1466788258000,
+            "internalName": null,
+            "locales": [],
+            "location": "app-profile",
+            "mpcOptedOut": false,
+            "multiprocessCompatible": false,
+            "optionsType": null,
+            "optionsURL": null,
+            "releaseNotesURI": null,
+            "seen": true,
+            "signedState": 1,
+            "size": 6152,
+            "skinnable": false,
+            "softDisabled": false,
+            "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/328626/run_fullscreen-0.1.0-fx.xpi?src=search",
+            "strictCompatibility": false,
+            "syncGUID": "V4RueMsPd8GV",
+            "targetApplications": [
+                {
+                    "id": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
+                    "maxVersion": "56.*",
+                    "minVersion": "2.0"
+                }
+            ],
+            "targetPlatforms": [],
+            "type": "extension",
+            "updateDate": 1466788258000,
+            "updateKey": null,
+            "updateURL": null,
+            "userDisabled": false,
+            "version": "0.1.0",
+            "visible": true
+        }
+    ],
+    "schemaVersion": 19
+}
