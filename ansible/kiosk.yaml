@@ -23,24 +23,6 @@
             state: started
             enabled: yes
         become: yes
-      - name: ensure that unclutter is installed
-        apt: name=unclutter state=installed
-        become: yes
-      - name: copy the systemd unit file for unclutter
-        copy:
-            src: ../etc/systemd/user/unclutter.service
-            dest: /etc/systemd/user/unclutter.service
-            owner: root
-            group: root
-            mode: 0644
-        become: yes
-      - name: ensure that unclutter is enabled and running
-        systemd:
-            name: unclutter.service
-            state: started
-            enabled: yes
-            daemon_reload: yes
-            user: yes
       - name: ensure that xset is installed
         apt: name=x11-xserver-utils state=installed
         become: yes
