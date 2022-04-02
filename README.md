@@ -5,3 +5,5 @@ This repository contains some configuration files for [dashpi](https://wiki.chao
 Currently, this isn't really usable.
 
 At some point in the future, this will expand.
+
+We're running this setup on a Raspberry Pi with Alpine in diskless mode.
