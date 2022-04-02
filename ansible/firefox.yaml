@@ -1,25 +1,10 @@
   - hosts: dashpi
-    remote_user: pi
+    remote_user: root
     tasks:
       - name: ensure that firefox-esr is installed
-        apt: name=firefox-esr state=installed
-        become: yes
+        apk: name=firefox-esr state=present
       - name: copy Firefox profile folder
         copy:
             src: ../home/.mozilla/firefox
-            dest: /home/pi/.mozilla/
-      - name: copy the systemd unit file for Firefox
-        copy:
-            src: ../etc/systemd/user/firefox.service
-            dest: /etc/systemd/user/firefox.service
-            owner: root
-            group: root
-            mode: 0644
-        become: yes
-      - name: ensure that Firefox is enabled and running
-        systemd:
-            name: firefox.service
-            state: started
-            enabled: yes
-            daemon_reload: yes
-            user: yes
+            dest: /home/dashpi/.mozilla/
+      # TODO: sway-config

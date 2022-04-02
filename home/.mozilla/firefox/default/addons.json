@@ -1,37 +1,33 @@
 {
+    "schema": 6,
     "addons": [
         {
-            "averageRating": 3,
-            "creator": {
-                "name": "Vadim",
-                "url": "https://addons.mozilla.org/en-US/firefox/user/geekless/?src=api"
-            },
-            "dailyUsers": 2001,
-            "description": "Run Firefox in the Fullscreen Mode by default.",
-            "developerComments": null,
-            "eula": null,
-            "fullDescription": "This addon allows you to start Firefox in the Fullscreen mode by default.",
-            "homepageURL": "https://addons.mozilla.org/en-US/firefox/addon/run-fullscreen/?src=api",
+            "id": "{d320c473-63c2-47ab-87f8-693b1badb5e3}",
             "icons": {
-                "32": null,
-                "64": null
+                "32": "https://addons.mozilla.org/user-media/addon_icons/934/934596-32.png?modified=1518384023",
+                "64": "https://addons.mozilla.org/user-media/addon_icons/934/934596-64.png?modified=1518384023",
+                "128": "https://addons.mozilla.org/user-media/addon_icons/934/934596-128.png?modified=1518384023"
             },
-            "id": "run-fullscreen@helpful-stuff.ru",
-            "isPlatformCompatible": true,
-            "learnmoreURL": "https://addons.mozilla.org/en-US/firefox/addon/run-fullscreen/?src=api",
-            "name": "Run Fullscreen 0.1.0",
-            "repositoryStatus": 4,
-            "reviewCount": 4,
-            "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/run-fullscreen/reviews/?src=api",
-            "size": 1557,
-            "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/328626/run_fullscreen-0.1.0-fx.xpi?src=api",
+            "name": "Auto Fullscreen",
+            "version": "1.0.0.2",
+            "sourceURI": "https://addons.mozilla.org/firefox/downloads/file/1105247/auto_fullscreen-1.0.0.2-fx.xpi",
+            "homepageURL": "https://github.com/tazeat/AutoFullscreen",
             "supportURL": null,
-            "totalDownloads": 15301,
+            "description": "Auto Fullscreen for Firefox Quantum",
+            "fullDescription": "This is a dumb 10 lines or less plugin to give FireFox Quantum the ability to launch in Fullscreen mode. On startup it simply updates the current window to set the window state to fullscreen. For best results set a homepage and configure Firefox to launch with that homepage on startup. Please create any issues on Github or submit a pull request for fixes.",
+            "weeklyDownloads": 263,
             "type": "extension",
-            "updateDate": 1436660465000,
-            "version": "0.1.0",
-            "weeklyDownloads": 7
+            "creator": {
+                "name": "tazeat",
+                "url": "https://addons.mozilla.org/en-US/firefox/user/13777225/"
+            },
+            "developers": [],
+            "screenshots": [],
+            "contributionURL": "",
+            "averageRating": 4.2857,
+            "reviewCount": 12,
+            "reviewURL": "https://addons.mozilla.org/en-US/firefox/addon/autofullscreen/reviews/",
+            "updateDate": 1539219006000
         }
-    ],
-    "schema": 5
+    ]
 }
