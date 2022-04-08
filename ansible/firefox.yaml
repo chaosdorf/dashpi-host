@@ -3,11 +3,18 @@
     tasks:
       - name: ensure that firefox-esr is installed
         apk: name=firefox-esr state=present
-      - name: copy Firefox profile folder
-        copy:
-            src: ../home/.mozilla/firefox
-            dest: /home/dashpi/.mozilla/
       - name: ensure firefox is started when starting sway
         lineinfile:
           path: /home/dashpi/.config/sway/config
-          line: exec 'while true; do firefox; done'
+          line: exec 'while true; do firefox --kiosk https://dashboard.chaosdorf.space/chaosdorf; done'
+      - name: hide mouse pointer
+        lineinfile:
+          path: /home/dashpi/.config/sway/config
+          line: seat seat0 hide_cursor 1000
+      - name: exclude firefox profile from lbu
+        community.general.lbu:
+          exclude:
+            - /home/dashpi/.mozilla
+      - name: commit changes
+        community.general.lbu:
+          commit: yes
