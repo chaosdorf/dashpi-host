@@ -1,4 +1,4 @@
-  - hosts: dashpi
+  - hosts: dashpi.chaosdorf.space
     remote_user: root
     tasks:
       - name: ensure that firefox-esr is installed
