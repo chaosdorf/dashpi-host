@@ -10,4 +10,4 @@
       - name: ensure firefox is started when starting sway
         lineinfile:
           path: /home/dashpi/.config/sway/config
-          line: exec firefox
+          line: exec 'while true; do firefox; done'
