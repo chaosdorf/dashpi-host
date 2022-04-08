@@ -7,4 +7,7 @@
         copy:
             src: ../home/.mozilla/firefox
             dest: /home/dashpi/.mozilla/
-      # TODO: sway-config
+      - name: ensure firefox is started when starting sway
+        lineinfile:
+          path: /home/dashpi/.config/sway/config
+          line: exec firefox
