@@ -10,6 +10,7 @@
 // - set it within a user.js file in your profile.
 
 user_pref("browser.cache.disk.enable", false);
+user_pref("browser.sessionstore.resume_from_crash", true);
 user_pref("browser.startup.homepage", "https://dashboard.chaosdorf.space/");
 user_pref("browser.startup.homepage_override.buildID", "20220315101459");
 user_pref("browser.startup.homepage_override.mstone", "91.7.1");
