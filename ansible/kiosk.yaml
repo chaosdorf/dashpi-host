@@ -32,6 +32,10 @@
         lineinfile:
           path: /home/dashpi/.profile
           line: sway && exit
+      - name: ensure the mouse cursor is hidden
+        lineinfile:
+          path: /home/dashpi/.config/sway/config
+          line: seat seat0 hide_cursor 1000
       - name: ensure dashpi is logged in on boot
         lineinfile:
           path: /etc/inittab
