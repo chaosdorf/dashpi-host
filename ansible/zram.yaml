@@ -1,0 +1,15 @@
+  - hosts: dashpi.chaosdorf.space
+    remote_user: root
+    tasks:
+      - name: ensure that zram-init is installed
+        apk: name=zram-init state=present
+      - name: configure it to only create swap
+        lineinfile:
+          path: /etc/conf.d/zram-init
+          line: num_devices=1
+          regexp: num_devices=.
+      - name: enable and start it
+        service:
+          name: zram-init
+          enabled: yes
+          state: started
