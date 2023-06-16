@@ -1,43 +1,12 @@
   - hosts: dashpi.chaosdorf.space
-    remote_user: root
     tasks:
-      - name: ensure that sway is installed
-        apk: name=sway state=present
-      - name: ensure that eudev is installed
-        apk: name=eudev state=present
-      - name: ensure that elogind is installed
-        apk: name=elogind state=present
-      - name: ensure that elogind-polkit is installed
-        apk: name=elogind-polkit state=present
-      - name: ensure that the graphics driver is installed
-        apk: name=mesa-dri-vc4 state=present
-      - name: enable vc4
-        lineinfile:
-          path: /media/mmcblk0p1/usercfg.txt
-          line: dtoverlay=vc4-kms-v3d
-          create: yes
-      - name: ensure that some fonts are installed
-        apk: name=ttf-dejavu state=present
-      - name: copy default config
-        copy:
-          remote_src: yes
-          src: /etc/sway/config
-          dest: /home/dashpi/.config/sway/config
-      - name: ensure XDG_RUNTIME_DIR is set
-        lineinfile:
-          path: /home/dashpi/.profile
-          line: export XDG_RUNTIME_DIR=/run/user/1000
-          create: yes
-      - name: ensure sway is started when logging in
-        lineinfile:
-          path: /home/dashpi/.profile
-          line: sway && exit
-      - name: ensure the mouse cursor is hidden
-        lineinfile:
-          path: /home/dashpi/.config/sway/config
-          line: seat seat0 hide_cursor 1000
-      - name: ensure dashpi is logged in on boot
-        lineinfile:
-          path: /etc/inittab
-          line: tty1::respawn:/bin/login -f dashpi
-          regexp: ^tty1
+      - name: install the UI
+        community.general.snap:
+          name: ubuntu-frame
+          state: present
+      - name: install browser and set url
+        community.general.snap:
+          name: wpe-webkit-mir-kiosk
+          state: present
+          options: 
+            - url=https://dashboard.chaosdorf.space/
