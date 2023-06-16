@@ -1,0 +1,19 @@
+  - hosts: dashpi.chaosdorf.space
+    tasks:
+      - name: add ytvwld
+        ansible.builtin.command:
+          cmd: snap create-user --force-managed --sudoer niklas@ytvwld.de
+          creates: /etc/sudoers.d/create-user-ytvwld
+        become: yes
+      - name: add marudor
+        ansible.builtin.command:
+          cmd: snap create-user --force-managed --sudoer marudor@marudor.de
+          creates: /etc/sudoers.d/create-user-marudor
+        become: yes
+      - name: add gnom
+        ansible.builtin.command:
+          cmd: snap create-user --force-managed --sudoer login.ubuntu.com@gnom.is
+          creates: /etc/sudoers.d/create-user-dasgnom
+        become: yes
+      
+      
