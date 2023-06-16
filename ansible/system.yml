@@ -1,0 +1,8 @@
+  - hosts: dashpi.chaosdorf.space
+    tasks:
+      - name: set timezone
+        ansible.builtin.command: snap set system system.timezone="Europe/Berlin"
+        become: yes
+      - name: enable RA
+        ansible.builtin.command: snap set system system.network.netplan.network.ethernets.eth0.accept-ra=true
+        become: yes
