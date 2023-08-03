@@ -4,6 +4,7 @@
         community.general.snap:
           name: ubuntu-frame
           state: present
+          channel: 22/stable
       - name: install browser and set url
         community.general.snap:
           name: wpe-webkit-mir-kiosk
