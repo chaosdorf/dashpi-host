@@ -15,5 +15,10 @@
           cmd: snap create-user --force-managed --sudoer login.ubuntu.com@gnom.is
           creates: /etc/sudoers.d/create-user-dasgnom
         become: yes
+      - name: add nik
+        ansible.builtin.command:
+          cmd: snap create-user --force-managed --sudoer ubuntu-one@nik.mx
+          creates: /etc/sudoers.d/create-user-nikp
+        become: yes
       
       
