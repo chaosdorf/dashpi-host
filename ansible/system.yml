@@ -6,3 +6,8 @@
       - name: enable RA
         ansible.builtin.command: snap set system system.network.netplan.network.ethernets.eth0.accept-ra=true
         become: yes
+      - name: install node-exporter
+        community.general.snap:
+          name: node-exporter
+          state: present
+          channel: latest/edge
